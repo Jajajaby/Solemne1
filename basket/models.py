@@ -2,7 +2,7 @@ from django.db import models
 from basket.defines import POSITION_PLAYER_CHOICES
 
 class Team(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=100)
     description = models.TextField()
     logo = models.ImageField(upload_to='media')
     
@@ -22,7 +22,6 @@ class Player(models.Model):
 	weight = models.DecimalField(max_digits=4, decimal_places=2, default=0) #peso 
 	picture = models.ImageField(upload_to='media')
 	position = models.CharField(max_length=15, choices=POSITION_PLAYER_CHOICES)
-	dv = models.PositiveIntegerField()
 
 	def full_rut(self):
 		return '{}-{}' . format(self.rut, self.dv)
@@ -37,9 +36,17 @@ class Coach(models.Model):
 	email = models.EmailField()
 	rut = models.CharField(max_length=15)
 	nickname = models.CharField(max_length=50)
-	dv = models.PositiveIntegerField()
 
 	def __str__(self):
 		return self.name
 
-#     question = models.ForeignKey(Question, on_delete=models.CASCADE)
+
+class Payroll(models.Model):
+	team = models.ForeignKey(Team, on_delete=models.CASCADE)
+	coach = models.ForeignKey(Coach, on_delete=models.CASCADE)
+	name = models.CharField(max_length=100)
+	date = models.DateField()
+	time = models.TimeField()
+
+	def __str__(self):
+		return self.name
