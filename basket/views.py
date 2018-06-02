@@ -102,39 +102,37 @@ def add_player(request):
 
 
 def add_coach(request):
-	template_name = 'coach/agregar.html'
-	data = {}
+	form = CoachForm(request.POST, request.FILES)
+	context = {'form':form}
 
-	if request.method == 'POST':
+	if request.method == "POST":
 		print("if")
-		data['form'] = CoachForm(request.POST, request.FILES)
 
-		if data['form'].is_valid():
-			data['form'].save()
-
-			return redirect('player_list')							#CAMBIAR POR COACH LIST
+		if form.is_valid():
+			form.save()
+			return redirect('player_list')								#CAMBIAR
 	else:
-		data['form'] = CoachForm()
+		form = CoachForm()
 		print("else")
-
-	return render(request, template_name, data)
+	
+	template_name = 'coach/agregar.html'
+	return render(request, template_name, context)
 
 
 
 def add_team(request):
-	template_name = 'team/agregar.html'
-	data = {}
+	form = TeamForm(request.POST, request.FILES)
+	context = {'form':form}
 
-	if request.method == 'POST':
+	if request.method == "POST":
 		print("if")
-		data['form'] = TeamForm(request.POST, request.FILES)
 
-		if data['form'].is_valid():
-			data['form'].save()
-
-			return redirect('player_list')							#CAMBIAR POR TEAM LIST
+		if form.is_valid():
+			form.save()
+			return redirect('player_list')								#CAMBIAR
 	else:
-		data['form'] = TeamForm()
+		form = TeamForm()
 		print("else")
-
-	return render(request, template_name, data)
+	
+	template_name = 'team/agregar.html'
+	return render(request, template_name, context)
