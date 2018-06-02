@@ -23,9 +23,6 @@ class Player(models.Model):
 	picture = models.ImageField(upload_to='media')
 	position = models.CharField(max_length=15, choices=POSITION_PLAYER_CHOICES)
 
-	def full_rut(self):
-		return '{}-{}' . format(self.rut, self.dv)
-
 	def __str__(self):
 		return self.name
 
