@@ -83,23 +83,21 @@ def list2(request):
 
 
 def add_player(request):
-	template_name = 'player/agregar.html'
-	data = {}
+	form = PlayerForm(request.POST, request.FILES)
+	context = {'form':form}
 
 	if request.method == "POST":
 		print("if")
-		form_player = PlayerForm(request.POST, request.FILES)
 
-
-		if form_player.is_valid():
-			form_player.save()
-
+		if form.is_valid():
+			form.save()
 			return redirect('player_list')
 	else:
-		data['form'] = PlayerForm()
+		form = PlayerForm()
 		print("else")
-
-	return render(request, template_name, data)
+	
+	template_name = 'player/agregar.html'
+	return render(request, template_name, context)
 
 
 

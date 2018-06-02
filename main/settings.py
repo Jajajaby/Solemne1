@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'auth_basket',
     #'autofixure',
     'bootstrap4',
-    'django_forms_bootstrap',
-    'bootstrapform',
+    #'django_forms_bootstrap',
+    #'bootstrapform',
 ]
 
 MIDDLEWARE = [

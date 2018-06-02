@@ -1,4 +1,4 @@
-{% load bootstrap_tags %}
+{% load bootstrap4 %}
 
 <!doctype html>
 <html lang="en">
@@ -36,7 +36,6 @@
 			</div>
 		</nav>
 
-
 		<!-- INICIO CONTENEDOR PRINCIPAL -->
 		<div class="container">
 			<div class="row">
@@ -45,7 +44,7 @@
 						<h1 style="margin-top:30px;">Agregar Player</h1>
 						<form enctype="multipart/form-data" method="POST" class="form-horizontal">
 							{% csrf_token %}
-							{{ form|as_bootstrap }}
+							{% bootstrap_form form %}
 							<input type="submit" value="Enviar" class="btn btn-primary float-right btn-lg">
 						</form>
 					</div>
@@ -53,7 +52,6 @@
 			</div>
 		</div>
 	    <!-- FIN CONTENEDOR PRINCIPAL -->
-
 
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
