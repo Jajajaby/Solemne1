@@ -21,47 +21,28 @@ def index(request):
 
 
 
-def detail(request, player_id):
+def player_delete(request,id):
+	#p = Player.objects.get(rut=player_rut)
+	p = Player.objects.get(id=id)
+	print("PLAYER %s" %p)
 
-	data = {}
-	template_name = 'player/detail_player.html'
-
-	# SELECT * FROM player WHERE id = player_id
-	data['player'] = Player.objects.get(pk=player_id)
-
-	return render(request, template_name, data)
-
-
-
-def delete(request,player_rut):
-	p = Player.objects.get(rut=player_rut)
-	p.delete()
-	return redirect("player_list2")
-
-
-
-def add(request):
-	data = {}
-	if request.method == "POST":
-		data['form'] = PlayerForm(request.POST, request.FILES)
-
-		if data['form'].is_valid():
-			data['form'].save()
-
-			return redirect('player_list')
-
+	if Player.objects.filter(id=id).exists():
+		print("IF")
+		p = Player.objects.get(id=id)
+		p.delete()
 	else:
-		data['form'] = PlayerForm()
+		print("No existe")
+	#p = get_object_or_404(Player, id=rut)
+    #p.delete()
+    #messages.add_message(request, messages.SUCCESS, "The player with rut %s has been deleted" %player_rut)
+    
+	return redirect('/basket/')
 
 
-	template_name = 'player/agregar.html'
-	return render(request, template_name,data)
 
-
-
-def update(request,player_rut):
+def player_update(request,id):
 	data = {}
-	player = Player.objects.get(rut=player_rut)
+	player = Player.objects.get(id=id)
 	if request.method == "GET":
 		data['form'] = PlayerForm(instance=player)
 	else:
@@ -69,7 +50,7 @@ def update(request,player_rut):
 		p = data['form']
 		if p.is_valid():
 			p.save()
-		return redirect("player_list2")
+		return redirect('/basket/')
 	template_name = 'player/agregar.html'
 	return render(request,template_name,data)
 

@@ -42,9 +42,10 @@
 				<table class="table table-striped">
 				  <thead>
 					<tr>
+					  <th scope="col">ID</th>
+					  <th scope="col">RUT</th>
 					  <th scope="col">Foto</th>
 					  <th scope="col">Nombre</th>
-					  <th scope="col">RUT</th>
 					  <th scope="col">Edad</th>
 					  <th scope="col">Posición</th>
 					  <th scope="col">Peso</th>
@@ -54,10 +55,11 @@
 				  </thead>
 				  <tbody>
 					{% for player in object_list %}
-					  	<tr>
-							<td> <img src =" {{ player.picture.url }}" alt="" class="img-thumbnail" ></td>
+					  	<tr>				
+					  		<td> {{player.id}} </td>
+					  		<td> {{player.rut}} </td>
+							<td> <img src =" {{ player.picture.url }}" alt="" class="img-thumbnail"></td>
 							<td> {{player.name}} </td>
-							<td> {{player.rut}} </td>
 							<td> {{player.age}} </td>
 							<td> {{player.position}} </td>
 							<td> {{player.weight}} </td>
@@ -69,30 +71,36 @@
 										Manager
 							  		</button>
 								 	<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-										<button class="dropdown-item" type="button">Editar</button>
-										<button class="dropdown-item" type="button">Eliminar</button>
+										<a style="text-decoration:none" href="{% url 'player_update' player.id %}">
+								         	<button class="dropdown-item" type="button">Editar</button>
+								        </a>
+
+        								<a style="text-decoration:none" href="{% url 'player_delete' player.id %}">
+								         	<button class="dropdown-item" type="button">Eliminar</button>
+								        </a>
+
 								  	</div>
 								</div>
 						  	</td>
 						</tr>
 					{% endfor %}
 					
-				  </tbody>x
+				  </tbody>
 				</table>
 			</div>
 
 			<nav aria-label="Page navigation example">
-			  <ul class="pagination justify-content-end">
-				<li class="page-item disabled">
-				  <a class="page-link" href="#" tabindex="-1">Previous</a>
-				</li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item">
-				  <a class="page-link" href="#">Next</a>
-				</li>
-			  </ul>
+			  	<ul class="pagination justify-content-end">
+					<li class="page-item disabled">
+				  	<a class="page-link" href="#" tabindex="-1">Previous</a>
+					</li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item">
+				  		<a class="page-link" href="#">Next</a>
+					</li>
+			  	</ul>
 			</nav>
 			
 		</div>

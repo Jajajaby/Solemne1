@@ -9,8 +9,8 @@ urlpatterns = [
 	path('add_coach/', views.add_coach, name="coach_add"),
 	path('add_team/', views.add_team, name="team_add"),
 	path('add_payroll/', views.add_payroll, name="payroll_add"),
-	path('view/<int:player_id>', views.detail, name="player_detail"),
+	path('player_delete/<str:id>', views.player_delete, name="player_delete"),
+	path('update/<str:id>', views.player_update, name="player_update")
 	#path('list2/', views.list2, name="player_list2"),
 	#path('list2/<str:player_rut>', views.delete, name="player_delete"),
-	#path('update/<str:player_rut>', views.update, name="player_update")
 ]
