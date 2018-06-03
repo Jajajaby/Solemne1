@@ -66,18 +66,17 @@ def list2(request):
 
 
 def add_player(request):
-	form = PlayerForm(request.POST, request.FILES)
+	form = PlayerForm(request.POST or None)
 	context = {'form':form}
 
 	if request.method == "POST":
-		print("if")
+		form = PlayerForm(request.POST, request.FILES)
 
 		if form.is_valid():
 			form.save()
 			return redirect('player_list')
 	else:
 		form = PlayerForm()
-		print("else")
 	
 	template_name = 'player/agregar.html'
 	return render(request, template_name, context)
@@ -85,18 +84,17 @@ def add_player(request):
 
 
 def add_coach(request):
-	form = CoachForm(request.POST, request.FILES)
+	form = CoachForm(request.POST or None)
 	context = {'form':form}
 
 	if request.method == "POST":
-		print("if")
+		form = CoachForm(request.POST, request.FILES)
 
 		if form.is_valid():
 			form.save()
 			return redirect('player_list')								#CAMBIAR
 	else:
 		form = CoachForm()
-		print("else")
 	
 	template_name = 'coach/agregar.html'
 	return render(request, template_name, context)
@@ -104,18 +102,17 @@ def add_coach(request):
 
 
 def add_team(request):
-	form = TeamForm(request.POST, request.FILES)
+	form = TeamForm(request.POST or None)
 	context = {'form':form}
 
 	if request.method == "POST":
-		print("if")
+		form = TeamForm(request.POST, request.FILES)
 
 		if form.is_valid():
 			form.save()
 			return redirect('player_list')								#CAMBIAR
 	else:
 		form = TeamForm()
-		print("else")
 	
 	template_name = 'team/agregar.html'
 	return render(request, template_name, context)
@@ -123,18 +120,17 @@ def add_team(request):
 
 
 def add_payroll(request):
-	form = PayrollForm(request.POST)
+	form = PayrollForm(request.POST or None)
 	context = {'form':form}
 
 	if request.method == "POST":
-		print("if")
+		form = PayrollForm(request.POST)
 
 		if form.is_valid():
 			form.save()
 			return redirect('player_list')								#CAMBIAR
 	else:
 		form = PayrollForm()
-		print("else")
 	
 	template_name = 'payroll/agregar.html'
 	return render(request, template_name, context)
