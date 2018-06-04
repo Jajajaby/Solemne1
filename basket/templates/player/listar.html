@@ -1,60 +1,63 @@
 <!doctype html>
 <html lang="en">
-  <head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
-	<title>DW2018 - UNAB</title>
+		<title>DW2018 - UNAB</title>
 
-  </head>
-  <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  <div class="container">
+  	</head>
+  	<body>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  	<div class="container">
 		  
-	  <a class="navbar-brand" href="#">Basket App</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	  </button>
+	  	<a class="navbar-brand" href="#">Basket App</a>
+	  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+	  		</button>
 
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto">
-		  <!-- <li class="nav-item active">
-			<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-		  </li> -->
-		</ul>
-		<form class="form-inline my-2 my-lg-0">
-		  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-		  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-		</form>
-	  </div>
+	  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+			  <!-- <li class="nav-item active">
+				<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+			  </li> -->
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
 
-	  </div>
-	</nav>
-	<div class="container">
+		</div>
+			</nav>
+		<div class="container">
 		
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 style="margin-top:30px;">Listado de Jugadores</h1>
 				<table class="table table-striped">
 				  <thead>
-					<tr>
-					  <th scope="col">ID</th>
-					  <th scope="col">RUT</th>
-					  <th scope="col">Foto</th>
-					  <th scope="col">Nombre</th>
-					  <th scope="col">Edad</th>
-					  <th scope="col">Posición</th>
-					  <th scope="col">Peso</th>
-					  <th scope="col">Altura</th>
-					  <th scope="col">Equipo</th>
-					</tr>
+					  <!--FILA DE ATRIBUTOS DE COLUMNAS -->
+						<tr>
+						  <th scope="col">ID</th>
+						  <th scope="col">RUT</th>
+						  <th scope="col">Foto</th>
+						  <th scope="col">Nombre</th>
+						  <th scope="col">Edad</th>
+						  <th scope="col">Posición</th>
+						  <th scope="col">Peso</th>
+						  <th scope="col">Altura</th>
+						  <th scope="col">Equipo</th>
+						</tr>
 				  </thead>
 				  <tbody>
-					{% for player in object_list %}
+
+					<!--INICIO DE LA FILA. AQUI SE LISTAN LOS REGISTROS-->
+					{% for player in p %}
 					  	<tr>				
 					  		<td> {{player.id}} </td>
 					  		<td> {{player.rut}} </td>
@@ -66,41 +69,58 @@
 							<td> {{player.height}} </td>
 							<td> {{player.team}} </td>
 							<td>
+								<!--BOTON QUE AL APRETAR DESPLIEGA OPCIONES EN CADA REGISTRO DE LA TABLA-->
 								<div class="dropdown">
 							  		<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										Manager
 							  		</button>
+
 								 	<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+
+										<!--BOTON EDITAR EN CADA REGISTRO DE LA TABLA-->
 										<a style="text-decoration:none" href="{% url 'player_update' player.id %}">
-								         	<button class="dropdown-item" type="button">Editar</button>
-								        </a>
+								      <button class="dropdown-item" type="button">Editar</button>
+								    </a>
 
-        								<a style="text-decoration:none" href="{% url 'player_delete' player.id %}">
-								         	<button class="dropdown-item" type="button">Eliminar</button>
-								        </a>
-
-								  	</div>
+										<!--BOTON ELIMINAR EN CADA REGISTRO DE LA TABLA-->
+        						<a style="text-decoration:none" href="{% url 'player_delete' player.id %}">
+								     	<button class="dropdown-item" type="button">Eliminar</button>
+								    </a>
+									</div>
 								</div>
-						  	</td>
-						</tr>
+						  </td>
+						</tr> <!--FIN DE LA FILA-->
 					{% endfor %}
-					
-				  </tbody>
+				 </tbody>
 				</table>
 			</div>
 
+
 			<nav aria-label="Page navigation example">
-			  	<ul class="pagination justify-content-end">
-					<li class="page-item disabled">
-				  	<a class="page-link" href="#" tabindex="-1">Previous</a>
-					</li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item">
-				  		<a class="page-link" href="#">Next</a>
-					</li>
-			  	</ul>
+				<ul class="pagination justify-content-end">
+
+					<!--BOTON PREVIOUS-->
+					{% if p.has_previous %}
+	            <li class="page-item">
+	            	<a class="page-link" href="?page={{ p.previous_page_number }}" tabindex="-1">Previous</a>
+	            </li>
+	        {% endif %}
+
+					<!--BOTONES QUE DEPENDEN DE LOS REGISTROS-->
+	        {% for page in p.paginator.page_range %}
+	            <li class="{% if p.number == page %}active{% endif %}">
+                <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+	            </li>
+	        {% endfor %}
+
+					<!--BOTON NEXT-->
+	        {% if p.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ p.next_page_number }}">Next</a>
+	          </li>
+	        {% endif %}
+
+	      </ul>
 			</nav>
 			
 		</div>
