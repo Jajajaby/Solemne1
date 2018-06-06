@@ -33,41 +33,35 @@
 		</div>
 
 		</div>
-		</nav>
+			</nav>
 		<div class="container">
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 style="margin-top:30px;">Listado de Jugadores</h1>
+				<h1 style="margin-top:30px;">Listado de Entrenadores</h1>
 				<table class="table table-striped">
 				  <thead>
 					  <!--FILA DE ATRIBUTOS DE COLUMNAS -->
 						<tr>
 						  <th scope="col">ID</th>
 						  <th scope="col">RUT</th>
-						  <th scope="col">Foto</th>
 						  <th scope="col">Nombre</th>
 						  <th scope="col">Edad</th>
-						  <th scope="col">Posición</th>
-						  <th scope="col">Peso</th>
-						  <th scope="col">Altura</th>
-						  <th scope="col">Equipo</th>
+						  <th scope="col">Apodo</th>
+						  <th scope="col">Email</th>
 						</tr>
 				  </thead>
 				  <tbody>
 
 					<!--INICIO DE LA FILA. AQUI SE LISTAN LOS REGISTROS-->
-					{% for player in p %}
+					{% for coach in p %}
 					  	<tr>				
-					  		<td> {{player.id}} </td>
-					  		<td> {{player.rut}} </td>
-							<td> <img src =" {{ player.picture.url }}" alt="" class="img-thumbnail"></td>
-							<td> {{player.name}} </td>
-							<td> {{player.age}} </td>
-							<td> {{player.position}} </td>
-							<td> {{player.weight}} </td>
-							<td> {{player.height}} </td>
-							<td> {{player.team}} </td>
+					  		<td> {{coach.id}} </td>
+					  		<td> {{coach.rut}} </td>
+							<td> {{coach.name}} </td>
+							<td> {{coach.age}} </td>
+							<td> {{coach.nickname}} </td>
+							<td> {{coach.email}} </td>
 							<td>
 								<!--BOTON QUE AL APRETAR DESPLIEGA OPCIONES EN CADA REGISTRO DE LA TABLA-->
 								<div class="dropdown">
@@ -78,17 +72,18 @@
 								 	<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
 
 										<!--BOTON EDITAR EN CADA REGISTRO DE LA TABLA-->
-										<a style="text-decoration:none" href="{% url 'player_update' player.id %}">
+										<a style="text-decoration:none" href="{% url 'coach_update' coach.id %}">
 								      <button class="dropdown-item" type="button">Editar</button>
 								    </a>
 
 										<!--BOTON ELIMINAR EN CADA REGISTRO DE LA TABLA-->
-        						<a style="text-decoration:none" href="{% url 'player_delete' player.id %}">
+        						<a style="text-decoration:none" href="{% url 'coach_delete' coach.id %}">
 								     	<button class="dropdown-item" type="button">Eliminar</button>
 								    </a>
 									</div>
 								</div>
 						  </td>
+
 						</tr> <!--FIN DE LA FILA-->
 					{% endfor %}
 				 </tbody>

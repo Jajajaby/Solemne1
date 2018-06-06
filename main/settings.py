@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
-from django.contrib.messages import constants as messages 
+from django.contrib.messages import constants as messages
+from django.contrib import messages
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -39,10 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'basket',
     'auth_basket',
-    #'autofixure',
     'bootstrap4',
-    #'django_forms_bootstrap',
-    #'bootstrapform',
 ]
 
 MIDDLEWARE = [

@@ -33,41 +33,35 @@
 		</div>
 
 		</div>
-		</nav>
+			</nav>
 		<div class="container">
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 style="margin-top:30px;">Listado de Jugadores</h1>
+				<h1 style="margin-top:30px;">Nómina de jugadores</h1>
 				<table class="table table-striped">
 				  <thead>
 					  <!--FILA DE ATRIBUTOS DE COLUMNAS -->
 						<tr>
 						  <th scope="col">ID</th>
-						  <th scope="col">RUT</th>
-						  <th scope="col">Foto</th>
 						  <th scope="col">Nombre</th>
-						  <th scope="col">Edad</th>
-						  <th scope="col">Posición</th>
-						  <th scope="col">Peso</th>
-						  <th scope="col">Altura</th>
+						  <th scope="col">Fecha</th>
+						  <th scope="col">Hora</th>
 						  <th scope="col">Equipo</th>
+						  <th scope="col">Entrenador</th>
 						</tr>
 				  </thead>
 				  <tbody>
 
 					<!--INICIO DE LA FILA. AQUI SE LISTAN LOS REGISTROS-->
-					{% for player in p %}
+					{% for payroll in p %}
 					  	<tr>				
-					  		<td> {{player.id}} </td>
-					  		<td> {{player.rut}} </td>
-							<td> <img src =" {{ player.picture.url }}" alt="" class="img-thumbnail"></td>
-							<td> {{player.name}} </td>
-							<td> {{player.age}} </td>
-							<td> {{player.position}} </td>
-							<td> {{player.weight}} </td>
-							<td> {{player.height}} </td>
-							<td> {{player.team}} </td>
+					  		<td> {{payroll.id}} </td>
+					  		<td> {{payroll.name}} </td>
+					  		<td> {{payroll.date}} </td>
+							<td> {{payroll.time}} </td>
+							<td> {{payroll.team}} </td>
+							<td> {{payroll.coach}} </td>
 							<td>
 								<!--BOTON QUE AL APRETAR DESPLIEGA OPCIONES EN CADA REGISTRO DE LA TABLA-->
 								<div class="dropdown">
@@ -78,12 +72,12 @@
 								 	<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
 
 										<!--BOTON EDITAR EN CADA REGISTRO DE LA TABLA-->
-										<a style="text-decoration:none" href="{% url 'player_update' player.id %}">
+										<a style="text-decoration:none" href="{% url 'payroll_update' payroll.id %}">
 								      <button class="dropdown-item" type="button">Editar</button>
 								    </a>
 
 										<!--BOTON ELIMINAR EN CADA REGISTRO DE LA TABLA-->
-        						<a style="text-decoration:none" href="{% url 'player_delete' player.id %}">
+        						<a style="text-decoration:none" href="{% url 'payroll_delete' payroll.id %}">
 								     	<button class="dropdown-item" type="button">Eliminar</button>
 								    </a>
 									</div>
